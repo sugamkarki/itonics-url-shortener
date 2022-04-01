@@ -8,9 +8,19 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NetworkInterceptor } from './interceptors/network.interceptor';
 import { ShortenComponent } from './components/shorten/shorten.component';
 
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [AppComponent, ShortenComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    SweetAlert2Module.forRoot(),
+    NgbModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

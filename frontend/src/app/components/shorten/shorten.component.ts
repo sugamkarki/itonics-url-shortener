@@ -3,13 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-shorten',
   templateUrl: './shorten.component.html',
-  styleUrls: ['./shorten.component.scss']
+  styleUrls: ['./shorten.component.scss'],
 })
 export class ShortenComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  url: string;
+  constructor() {}
+  ngOnInit(): void {}
 }
