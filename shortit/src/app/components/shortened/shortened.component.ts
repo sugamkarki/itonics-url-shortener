@@ -32,7 +32,7 @@ export class ShortenedComponent implements OnInit {
               text: 'Invalid URL',
               icon: 'error',
             });
-            this.router.navigate(['/']);
+            this.router.navigate(['short']);
           }
         );
       }
