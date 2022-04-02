@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UrlService } from 'src/app/services/url.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-shorten',
   templateUrl: './shorten.component.html',
@@ -19,10 +20,19 @@ export class ShortenComponent implements OnInit {
       value: 'http://',
     },
   ];
-  constructor(private urlService: UrlService) {}
+  constructor(private urlService: UrlService, private router: Router) {}
 
   ngOnInit(): void {}
   shortenURL() {
     const finalURL = this.protocol + this.myUrl;
+    this.urlService.create(finalURL).subscribe((data: any) => {
+      console.log(data);
+      Swal.fire({
+        title: 'Shortened URL',
+        text: data.shortURL,
+        icon: 'success',
+      });
+      this.router.navigate(['', data.shortURL]);
+    });
   }
 }

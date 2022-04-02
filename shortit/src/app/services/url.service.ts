@@ -7,6 +7,9 @@ import { Injectable } from '@angular/core';
 export class UrlService {
   constructor(private http: HttpClient) {}
   create(url: string) {
-    return this.http.post('/api/url', { url });
+    return this.http.post('/api/urls', { originalURL: url });
+  }
+  getOriginalUrl(key: string) {
+    return this.http.get(`api/urls/${key}`);
   }
 }

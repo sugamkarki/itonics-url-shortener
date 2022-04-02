@@ -1,0 +1,20 @@
+<div class="hasKey" *ngIf="urlKey">
+  <p>Your Original URL is: {{ originalUrl }}</p>
+  <button mat-raised-button (click)="visit()">Visit</button>
+</div>
+<div class="doesntHaveKey" *ngIf="!urlKey">
+  <mat-form-field class="example-form-field" appearance="fill">
+    <mat-label>Enter Your URL to shorten</mat-label>
+    <input matInput type="text" [(ngModel)]="enteredKey" />
+    <button
+      *ngIf="enteredKey"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="enteredKey = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <button mat-raised-button color="accent" (click)="visit()">Shorten</button>
+</div>
