@@ -1,1 +1,25 @@
-<p>shorten works!</p>
+<div class="shorten">
+  <mat-form-field appearance="fill">
+    <mat-label>Select Protocol</mat-label>
+    <mat-select [(ngModel)]="protocol">
+      <mat-option *ngFor="let p of protocols" [value]="p.value">
+        {{ p.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="example-form-field" appearance="fill">
+    <mat-label>Enter Your URL to shorten</mat-label>
+    <input matInput type="text" [(ngModel)]="myUrl" />
+    <button
+      *ngIf="myUrl"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="myUrl = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <button mat-raised-button color="accent" (click)="shortenURL()">Shorten</button>
+  <p>Your URL to Shorten is: {{ protocol + myUrl }}</p>
+</div>

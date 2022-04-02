@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ShortenComponent } from './components/shorten/shorten.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent, NavbarComponent, ShortenComponent],
   imports: [
@@ -15,6 +15,7 @@ import { ShortenComponent } from './components/shorten/shorten.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
