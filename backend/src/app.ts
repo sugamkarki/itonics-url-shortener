@@ -4,8 +4,6 @@ import express, { Express } from "express";
 import { createConnection } from "typeorm";
 import { UrlController } from "./Controller/url.controller";
 import cors from "cors";
-const { DB_DATABASE, DB_HOST, DB_PASSWORD, DB_USERNAME, DB_LOGGING } =
-  process.env;
 
 const PORT = process.env.PORT || 3003;
 
@@ -20,7 +18,11 @@ class Server {
   }
 
   public setupConfig(): void {
-    this.app.use(cors({ origin: "*" }));
+    this.app.use(
+      cors({
+        origin: "localhost:4200",
+      })
+    );
     this.app.use(express.json());
   }
 
