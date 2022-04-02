@@ -7,9 +7,9 @@ import { environment } from 'src/environments/environment';
 export class UrlService {
   constructor(private http: HttpClient) {}
   create(url: string) {
-    return this.http.post(`${environment.API_URL}/urls`, { originalURL: url });
+    return this.http.post(`api/urls`, { originalURL: url });
   }
   getOriginalUrl(key: string) {
-    return this.http.get(`${environment.API_URL}/urls/${key}`);
+    return this.http.get(`api/urls/${key}`);
   }
 }
