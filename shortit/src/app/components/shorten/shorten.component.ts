@@ -32,7 +32,7 @@ export class ShortenComponent implements OnInit {
         text: data.shortURL,
         icon: 'success',
       });
-      this.router.navigate(['', data.shortURL]);
+      this.router.navigate(['short', data.shortURL]);
     });
   }
 }

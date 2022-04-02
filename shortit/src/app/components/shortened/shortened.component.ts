@@ -38,6 +38,23 @@ export class ShortenedComponent implements OnInit {
       }
     });
   }
-  visit() {}
+  visit() {
+    window.location.href = this.originalUrl;
+  }
   ngOnInit(): void {}
+  getURL() {
+    this.urlService.getOriginalUrl(this.enteredKey).subscribe(
+      (data: any) => {
+        this.originalUrl = data.originalURL;
+        window.location.href = this.originalUrl;
+      },
+      (error) => {
+        Swal.fire({
+          title: 'Error',
+          text: 'Invalid URL',
+          icon: 'error',
+        });
+      }
+    );
+  }
 }
