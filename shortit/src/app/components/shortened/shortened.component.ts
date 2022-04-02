@@ -57,4 +57,11 @@ export class ShortenedComponent implements OnInit {
       }
     );
   }
+  copiedTextAlert() {
+    Swal.fire({
+      title: 'Copied!',
+      text: 'Your shortened URL has been copied to the clipboard.',
+      icon: 'info',
+    });
+  }
 }

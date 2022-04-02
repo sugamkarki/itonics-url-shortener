@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-
+import { ClipboardModule } from '@angular/cdk/clipboard';
 const IMPORTS_ARRAY = [
   MatButtonModule,
   MatProgressSpinnerModule,
@@ -15,6 +15,7 @@ const IMPORTS_ARRAY = [
   MatInputModule,
   FormsModule,
   MatSelectModule,
+  ClipboardModule,
 ];
 @NgModule({
   exports: IMPORTS_ARRAY,

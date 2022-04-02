@@ -1,6 +1,10 @@
 <div class="hasKey" *ngIf="urlKey">
   <p>Your Original URL is: {{ originalUrl }}</p>
   <button mat-raised-button (click)="visit()">Visit</button>
+  <p>Your Key is{{ urlKey }}</p>
+  <button mat-flat-button color="accent" [cdkCopyToClipboard]="urlKey" (click)="copiedTextAlert()">
+    Copy
+  </button>
 </div>
 <div class="doesntHaveKey" *ngIf="!urlKey">
   <mat-form-field class="example-form-field" appearance="fill">
