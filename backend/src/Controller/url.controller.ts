@@ -1,8 +1,6 @@
 import { Request, Response, Router } from "express";
 import { Url } from "../entity/url.entity";
-import { nanoid } from "nanoid";
 import { UrlService } from "../Service/url.service";
-import { STATUS_CODES } from "http";
 
 export class UrlController {
   private router: Router;
@@ -38,15 +36,12 @@ export class UrlController {
         req.params.key
       );
       if (originalUrl) {
-        console.log("here!!!!!!!");
-        console.log(originalUrl);
         return res.status(200).json(originalUrl);
       }
       res.status(400).send("KEY not found");
     } catch (e: any) {
       res.status(400).send(e.message);
     }
-    // return res.status(400).send("KEY not found");
   }
 
   public getRouter(): Router {
