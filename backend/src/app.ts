@@ -28,18 +28,6 @@ class Server {
 
   public async setupRoutes() {
     await createConnection();
-    //     {
-    //   type: "postgres",
-    //   host: DB_HOST,
-    //   port: 5432,
-    //   username: DB_USERNAME,
-    //   password: DB_PASSWORD,
-    //   database: DB_DATABASE,
-    //   synchronize: true,
-    //   entities: ["src/entity/**/*.ts"],
-    //   logging: DB_LOGGING
-    // }
-
     this.urlController = new UrlController();
 
     // USERS Endpoint
