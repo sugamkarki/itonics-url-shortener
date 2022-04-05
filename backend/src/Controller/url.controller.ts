@@ -13,48 +13,32 @@ export class UrlController {
   }
 
   private async createURL(req: Request, res: Response) {
-    return this.urlService.createURL(req, res);
-    // const url: Url = req.body;
-    // if (!url.originalURL) {
-    //   res.send("Please enter a valid URL");
-    //   res.end();
-    // }
-    // url.shortURL = nanoid();
-    // try {
-    //   const result = await Url.save(url);
-    //   return res.status(200).json(result);
-    // } catch (error: any) {
-    //   console.error(error.error.message);
-    //   res.status(400);
-    // }
+    try {
+      const createdUrl: Url = await this.urlService.createURL(
+        req.body.originalURL
+      );
+      return res.status(200).json(createdUrl);
+    } catch (e: any) {
+      res.status(400).send(e.message);
+    }
   }
   private async getAllURL(req: Request, res: Response) {
-    return this.urlService.getAllURL(req, res);
-    // try {
-    //   const url = await Url.find();
-    //   return res.status(200).json(url);
-    // } catch (error: any) {
-    //   console.error(error.error.message);
-    //   res.status(400).send(error.message);
-    // }
+    try {
+      const urls: Url[] = await this.urlService.getAllURL();
+
+      res.status(200).json(urls);
+    } catch (e: any) {
+      res.status(400).send(e.error.message);
+    }
   }
   async getOriginalUrl(req: Request, res: Response) {
-    return this.urlService.getOriginalUrl(req, res);
-    // const shortURL = req.params.key;
-    // try {
-    //   const url = await Url.findOne({
-    //     where: {
-    //       shortURL,
-    //     },
-    //   });
-    //   if (url) {
-    //     return res.json(url);
-    //   }
-    //   return res.sendStatus(404);
-    // } catch (error: any) {
-    //   console.error(error.error.message);
-    //   res.status(400).send(error.message);
-    // }
+    const originalUrl: Url = await this.urlService.getOriginalUrl(
+      req.params.key
+    );
+    if (originalUrl) {
+      return res.status(200).json(originalUrl);
+    }
+    return res.status(400).send("KEY not found");
   }
 
   public getRouter(): Router {
