@@ -4,6 +4,7 @@ export class UrlService {
   constructor() {}
 
   async createURL(originalUrl: string) {
+    console.log(originalUrl);
     if (!originalUrl) {
       throw new Error("Please enter a valid URL");
     }
@@ -31,24 +32,21 @@ export class UrlService {
     } catch (error: any) {
       console.error(error.error.message);
       //   res.status(400).send(error.message);
-      throw error.error.message;
+      throw new Error("Something bad happened");
     }
   }
   async getOriginalUrl(shortURL: string) {
-    try {
-      const url = await Url.findOne({
-        where: {
-          shortURL,
-        },
-      });
-      if (url) {
-        return url;
-      }
-      console.error("KEY not found");
-      throw "KEY not found";
-    } catch (error: any) {
-      console.error(error);
-      throw error;
+    const url = await Url.findOne({
+      where: {
+        shortURL,
+      },
+    });
+    if (url) {
+      console.log("url found!!");
+      return url;
+    } else {
+      console.log("not found!!!");
+      throw new Error("KEY not found");
     }
   }
 }
